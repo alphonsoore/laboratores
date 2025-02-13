@@ -13,9 +13,11 @@
         .correct { background: rgba(0, 0, 255, 0.5); border-radius: 50%; }
         .incorrect { background: rgba(255, 0, 0, 0.5); }
         .sound-button { position: absolute; bottom: 5px; right: 5px; width: 25px; height: 25px; background: gray; opacity: 0.7; cursor: pointer; }
+        .play-button { margin: 20px; padding: 10px 20px; background-color: #4CAF50; color: white; font-size: 16px; cursor: pointer; }
     </style>
 </head>
 <body>
+    <button class="play-button" id="playButton">Start Game</button>
     <div class="grid" id="gameGrid"></div>
     <script>
         const imageDir = './';
@@ -27,7 +29,6 @@
         const startSound = new Audio(soundDir + 'start.wav');
         const correctSound = new Audio(soundDir + 'yes.wav');
         const incorrectSound = new Audio(soundDir + 'no.wav');
-        startSound.play();
         
         function createCard(name) {
             const card = document.createElement('div');
@@ -69,7 +70,13 @@
         }
         
         const grid = document.getElementById('gameGrid');
-        shuffled.forEach(name => grid.appendChild(createCard(name)));
+        const playButton = document.getElementById('playButton');
+        
+        playButton.addEventListener('click', function() {
+            startSound.play();
+            shuffled.forEach(name => grid.appendChild(createCard(name)));
+            playButton.style.display = 'none'; // Hide button after start
+        });
     </script>
 </body>
 </html>
