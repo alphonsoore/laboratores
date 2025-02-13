@@ -20,16 +20,16 @@
             grid-gap: 10px; 
             justify-items: center; 
             width: 80vw; 
-            max-width: 600px; 
             height: 80vh; 
-            max-height: 600px; 
+            max-width: 80vw; 
+            max-height: 80vh;
         }
         .card { 
             position: relative; 
             width: 100%; 
-            height: 100%; 
+            height: 0; 
+            padding-bottom: 83.27%; /* 433 / 520 * 100 */
             cursor: pointer; 
-            aspect-ratio: 1; 
         }
         .card img { 
             width: 100%; 
@@ -127,6 +127,16 @@
         const grid = document.getElementById('gameGrid');
         const playButton = document.getElementById('playButton');
         
+        window.addEventListener('resize', adjustGridSize);
+        adjustGridSize();
+
+        function adjustGridSize() {
+            const maxWidth = window.innerWidth * 0.8;
+            const maxHeight = window.innerHeight * 0.8;
+            grid.style.maxWidth = `${maxWidth}px`;
+            grid.style.maxHeight = `${maxHeight}px`;
+        }
+
         playButton.addEventListener('click', function() {
             startSound.play();
             shuffled.forEach(name => grid.appendChild(createCard(name)));
