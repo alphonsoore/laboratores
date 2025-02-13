@@ -18,8 +18,8 @@
 <body>
     <div class="grid" id="gameGrid"></div>
     <script>
-        const imageDir = '/';
-        const soundDir = '/';
+        const imageDir = './';
+        const soundDir = './';
         const soundFiles = ['actor', 'architect', 'artist', 'astronaut', 'baker', 'ballerina', 'baseballplayer', 'carpenter', 'cartoonist', 'dentist', 'doctor', 'engineer', 'farmer', 'fashiondesigner', 'figureskater', 'firefighter', 'florist', 'gamecreator', 'lawyer', 'musician', 'newscaster', 'pastrychef', 'petstoreclerk', 'pharmacist', 'pilot', 'policeofficer', 'singer', 'soccerplayer', 'teacher', 'vet', 'writer', 'zookeeper'];
         const shuffled = soundFiles.sort(() => 0.5 - Math.random()).slice(0, 16);
         const correctCard = shuffled[Math.floor(Math.random() * shuffled.length)];
