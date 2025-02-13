@@ -21,8 +21,6 @@
             justify-items: center; 
             width: 80vw; 
             height: 80vh; 
-            max-width: 80vw; 
-            max-height: 80vh;
         }
         .card { 
             position: relative; 
@@ -75,8 +73,8 @@
     <button class="play-button" id="playButton">Start Game</button>
     <div class="grid" id="gameGrid"></div>
     <script>
-        const imageDir = './';
-        const soundDir = './';
+        const imageDir = './';  // Ensure correct path to images
+        const soundDir = './';  // Ensure correct path to sounds
         const soundFiles = ['actor', 'architect', 'artist', 'astronaut', 'baker', 'ballerina', 'baseballplayer', 'carpenter', 'cartoonist', 'dentist', 'doctor', 'engineer', 'farmer', 'fashiondesigner', 'figureskater', 'firefighter', 'florist', 'gamecreator', 'lawyer', 'musician', 'newscaster', 'pastrychef', 'petstoreclerk', 'pharmacist', 'pilot', 'policeofficer', 'singer', 'soccerplayer', 'teacher', 'vet', 'writer', 'zookeeper'];
         const shuffled = soundFiles.sort(() => 0.5 - Math.random()).slice(0, 16);
         const correctCard = shuffled[Math.floor(Math.random() * shuffled.length)];
@@ -127,16 +125,6 @@
         const grid = document.getElementById('gameGrid');
         const playButton = document.getElementById('playButton');
         
-        window.addEventListener('resize', adjustGridSize);
-        adjustGridSize();
-
-        function adjustGridSize() {
-            const maxWidth = window.innerWidth * 0.8;
-            const maxHeight = window.innerHeight * 0.8;
-            grid.style.maxWidth = `${maxWidth}px`;
-            grid.style.maxHeight = `${maxHeight}px`;
-        }
-
         playButton.addEventListener('click', function() {
             startSound.play();
             shuffled.forEach(name => grid.appendChild(createCard(name)));
